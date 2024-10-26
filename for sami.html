@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParaSami</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #a609ee; /* Cor de fundo padrão */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; /* Impede rolagem no body */
+            position: relative; /* Permite que os corações sejam posicionados em relação ao body */
+        }
+
+        .container {
+            text-align: center;
+            background-color: #000000;
+            border-radius: 100px;
+            box-shadow: 0 -10px 90px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            padding: 80px;
+            max-height: 80vh; /* Limita a altura do contêiner */
+            overflow-y: auto; /* Permite rolagem dentro do contêiner */
+        }
+
+        /* Para navegadores baseados em WebKit (Chrome, Safari) */
+        .container::-webkit-scrollbar {
+            width: 0; /* Oculta a barra de rolagem */
+            background: transparent; /* Torna o fundo da barra de rolagem transparente */
+        }
+
+        /* Para Firefox */
+        .container {
+            scrollbar-width: thin; /* Barra de rolagem fina */
+            scrollbar-color: transparent transparent; /* Torna a barra de rolagem invisível */
+        }
+
+        h1 {
+            color: #ca10c1;
+        }
+
+        .first-image {
+            width: 300px; /* Largura fixa da primeira imagem */
+        }
+
+        .caption {
+            margin-top: 10px;
+            font-style: italic;
+            color: #a609ee;
+        }
+
+        p {
+            font-size: 18px;
+            color: #a609ee;
+            margin-top: 30px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ca10c1;
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            display: block; /* Permite que o botão ocupe uma linha completa */
+            margin-left: auto; /* Centraliza o botão */
+            margin-right: auto; /* Centraliza o botão */
+        }
+
+        button:hover {
+            background-color: #a609ee;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .heart {
+            position: absolute;
+            top: 100vh; /* Começa fora da tela */
+            font-size: 24px; /* Tamanho do coração */
+            color: #ff69b4; /* Cor do coração */
+            animation: rise 3s forwards; /* Animação de subida */
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-100vh); /* Sobe até fora da tela */
+            }
+        }
+
+        /* Estilo do jogo */
+        .game-container {
+            margin-top: 40px;
+            display: none; /* Escondido inicialmente */
+            flex-direction: column; /* Coloca as figuras em coluna */
+            align-items: center; /* Centraliza as figuras */
+        }
+
+        .figure {
+            width: 110px; /* Largura da figura */
+            height: 110px; /* Altura da figura */
+            cursor: pointer;
+            margin: 5px; /* Margem entre as figuras */
+        }
+
+        .hidden-image img {
+            width: 60%; /* Ajuste para 60% da largura do contêiner */
+            height: auto; /* Mantém a proporção da imagem */
+            margin-top: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container {
+            margin-top: 20px;
+        }
+
+        .audio-container {
+            display: none; /* Inicialmente escondido */
+            margin-top: 20px; /* Margem para separar do conteúdo acima */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Para Totosa chamada Sami ❤️</h1>
+
+        <img src="CAT.webp" alt="Essa é você" class="first-image" />
+
+        <p class="caption">Essa é você</p>
+
+        <p>
+            Eu gosto muito, muito, muito de você. Talvez você tenha medo de ser machucada no amor novamente. Porém, quero te dizer que jamais penso em ser alguém ruim para você. Sei que você já passou por tantas coisas que machucaram seu coraçãozinho, sei que você já chorou sentindo culpa por coisas que não fez, e não consigo nem imaginar o quanto isso foi difícil para você. Então, eu não serei mais uma pessoa da qual você se arrependerá de ter conhecido. E está tudo bem se você não acreditar nisso agora, mas espero que enxergue meu coração.
+
+            Aos meus olhos, você é a garota mais linda, gostosa, divertida, fofa, engraçadinha e perfeita do universo. Não adianta falar que não é, porque você é sim, e ponto final. Sei que eu não sou perfeito, mas pode ter certeza de que meu coração só tem coisas boas para compartilhar com você, totosa.
+        </p>
+
+        <button onclick="mostrarMensagem()">Se apertar aqui nao tem mais volta</button>
+        
+        <p class="secret-message" id="mensagemSecreta" style="display: none;">entao voce apertou o botao né, AGORA VC É MINHA MOMORADA, nao tem mais volta, Sempre que tô com saudade de você vejo essa foto e lembro de nozes na hihappy !</p>
+        
+        <button id="fotinhaButton" style="display: none;" onclick="mostrarImagem()">Eu e vc, Vc e eu</button> <!-- Escondido inicialmente -->
+
+        <div class="hidden-image" id="imagemEscondida" style="display: none;">
+            <img src="macacos.jpeg" alt="Imagem Surpresa">
+            <p class="action-caption">Essa é a única fotinha que tenho da gente, claramente eu e você segurando eu e você de pelúcia.</p>
+        </div>
+
+        <!-- Jogo de achar as figuras -->
+        <div class="game-container" id="gameContainer">
+            <h2 id="gameTitle">escolha as imagens e veja o que é engraçado</h2>
+            <img src="b1.jfif" alt="Figura 1" class="figure" onclick="figureClicked(1)">
+            <img src="v2.jfif" alt="Figura 2" class="figure" onclick="figureClicked(2)">
+            <img src="m3.jfif" alt="Figura 3" class="figure" onclick="figureClicked(3)">
+            <p id="gameMessage" style="display: none; color: #ca10c1;"></p>
+        </div>
+
+        <button id="startGameButton" style="display: none;" onclick="startGame()">veja uma por uma</button> <!-- Escondido inicialmente -->
+        <button id="videoButton" style="display: none;" onclick="mostrarVideo()">Eu e vc ramsters</button> <!-- Escondido inicialmente -->
+
+        <div class="video-container" id="videoContainer" style="display: none;">
+            <video width="320" height="240" controls>
+                <source src="film.mp4" type="video/mp4"> <!-- Substitua "seu_video.mp4" pelo caminho do seu vídeo -->
+                Seu navegador não suporta o elemento de vídeo.
+            </video>
+            <p id="videoText" style="display: none; color: #a609ee; font-style: italic;">
+                esses somos eu e você de um universo paralelo onde somos ramster vendo um filminho e eu tento roubar um mini nuguets de ramster seu
+            </p>
+            <button id="musicButton" onclick="mostrarMusica()">Aqui uma musiquinha q me lembra vc que eu adoro</button> <!-- Botão para mostrar/esconder música -->
+        </div>
+
+        <div class="audio-container" id="audioContainer">
+            <audio controls>
+                <source src="Artic Monkeys - Do I Wanna Know.m4a" type="audio/mpeg"> <!-- Substitua "sua_musica.mp3" pelo caminho da sua música -->
+                Seu navegador não suporta o elemento de áudio.
+            </audio>
+        </div>
+
+        <button id="finalConsiderationsButton" style="display: none;" onclick="mostrarConsideracoes()">Considerações Finais</button>
+    </div>
+
+    <script>
+        function mostrarMensagem() {
+            var mensagem = document.getElementById("mensagemSecreta");
+            mensagem.style.display = "block";
+            setTimeout(() => { mensagem.style.opacity = "1"; }, 10);
+            document.getElementById("fotinhaButton").style.display = "block"; // Mostra o botão "Fotinha Surpresa"
+        }
+
+        function mostrarImagem() {
+            var imagem = document.getElementById("imagemEscondida");
+            imagem.style.display = "block"; // Exibe a imagem apenas após o botão ser clicado
+            setTimeout(() => { imagem.style.opacity = "1"; }, 10);
+            document.getElementById("startGameButton").style.display = "block"; // Mostra o botão "Começar Jogo"
+        }
+
+        function mostrarVideo() {
+            var videoContainer = document.getElementById("videoContainer");
+            videoContainer.style.display = "block"; // Exibe a seção de vídeo
+            document.getElementById("videoButton").style.display = "none"; // Esconde o botão "Ver Mini Vídeo" após o clique
+            document.getElementById("videoText").style.display = "block"; // Exibe o texto abaixo do vídeo
+            document.getElementById("finalConsiderationsButton").style.display = "block"; // Mostra o botão "Considerações Finais"
+        }
+
+        // Função para mostrar/ocultar música
+        function mostrarMusica() {
+            var audioContainer = document.getElementById("audioContainer");
+            audioContainer.style.display = audioContainer.style.display === "none" ? "block" : "none"; // Alterna a exibição da seção de áudio
+        }
+
+        // Função para criar corações
+        function criarCoracao() {
+            const coracao = document.createElement('div');
+            coracao.className = 'heart';
+            coracao.innerHTML = '❤️'; // Emoji de coração
+            document.body.appendChild(coracao);
+            
+            // Define a posição inicial do coração
+            coracao.style.left = Math.random() * 200 + 'vw'; // Posição horizontal aleatória
+
+            // Remove o coração após a animação
+            setTimeout(() => {
+                document.body.removeChild(coracao);
+            }, 3500);
+        }
+
+        // Cria corações a cada 800ms
+        setInterval(criarCoracao, 200);
+
+        // Iniciar o jogo
+        function startGame() {
+            document.getElementById("gameContainer").style.display = "flex"; // Exibe o contêiner do jogo
+            document.getElementById("gameTitle").style.display = "block"; // Mostra o título do jogo
+            document.getElementById("startGameButton").style.display = "none"; // Esconde o botão "Começar Jogo" após o clique
+        }
+
+        function figureClicked(figure) {
+            const message = document.getElementById("gameMessage");
+            switch (figure) {
+                case 1:
+                    message.innerText = "Engraçado que ninguém me chamou pra F1 até hoje.";
+                    break;
+                case 2:
+                    message.innerText = "Me leva pra ver você jogar e eu poder xingar o outro time todinho.";
+                    break;
+                case 3:
+                    message.innerText = "E é claro, me chama pra eu mamar seu tete (nosso).";
+                    document.getElementById("videoButton").style.display = "block"; // Mostra o botão "Ver Mini Vídeo" após clicar na imagem 3
+                    break;
+                default:
+                    message.innerText = "";
+            }
+            message.style.display = "block"; // Exibe a mensagem quando uma figura é clicada
+        }
+
+        function mostrarConsideracoes() {
+            alert("e isso foi um pouquinho de um tekinho de um tiquinho q consegui fazer pra vc, espero que goste pq foi de coração totosa, to com uma saudade da porra de você e espero te ver logo. (um pedido que faço pra voce é que você esmague meu cranio com essas suas coxa q eu to doido pra deita nelas)");
+        }
+    </script>
+</body>
+</html>
