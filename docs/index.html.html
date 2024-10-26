@@ -22,11 +22,11 @@
         .container {
             text-align: center;
             background-color: #000000;
-            border-radius: 100px;
+            border-radius: 20px; /* Altere o raio para algo mais suave em dispositivos móveis */
             box-shadow: 0 -10px 90px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            padding: 80px;
-            max-height: 80vh; /* Limita a altura do contêiner */
+            max-width: 90%; /* Limita a largura do contêiner para 90% da tela */
+            padding: 20px; /* Ajuste o preenchimento para maior conforto */
+            max-height: 90vh; /* Limita a altura do contêiner */
             overflow-y: auto; /* Permite rolagem dentro do contêiner */
         }
 
@@ -47,7 +47,8 @@
         }
 
         .first-image {
-            width: 300px; /* Largura fixa da primeira imagem */
+            width: 100%; /* Ajusta a largura da imagem para 100% do contêiner */
+            max-width: 300px; /* Limita a largura máxima da imagem */
         }
 
         .caption {
@@ -57,7 +58,7 @@
         }
 
         p {
-            font-size: 18px;
+            font-size: 16px; /* Reduz a fonte para melhor leitura em dispositivos pequenos */
             color: #a609ee;
             margin-top: 30px;
         }
@@ -112,14 +113,15 @@
         }
 
         .figure {
-            width: 110px; /* Largura da figura */
-            height: 110px; /* Altura da figura */
+            width: 90%; /* Largura da figura ajustada para 90% do contêiner */
+            max-width: 110px; /* Largura máxima da figura */
+            height: auto; /* Mantém a proporção da imagem */
             cursor: pointer;
             margin: 5px; /* Margem entre as figuras */
         }
 
         .hidden-image img {
-            width: 60%; /* Ajuste para 60% da largura do contêiner */
+            width: 100%; /* Ajuste para 100% da largura do contêiner */
             height: auto; /* Mantém a proporção da imagem */
             margin-top: 10px;
             border-radius: 5px;
@@ -133,6 +135,15 @@
         .audio-container {
             display: none; /* Inicialmente escondido */
             margin-top: 20px; /* Margem para separar do conteúdo acima */
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em; /* Ajusta o tamanho do cabeçalho para telas menores */
+            }
+            p {
+                font-size: 14px; /* Ajusta o tamanho do texto para melhor legibilidade */
+            }
         }
     </style>
 </head>
@@ -171,105 +182,60 @@
         </div>
 
         <button id="startGameButton" style="display: none;" onclick="startGame()">veja uma por uma</button> <!-- Escondido inicialmente -->
-        <button id="videoButton" style="display: none;" onclick="mostrarVideo()">Eu e vc ramsters</button> <!-- Escondido inicialmente -->
+        <button id="videoButton" onclick="mostrarVideo()">O que você tá fazendo na cama?</button>
 
         <div class="video-container" id="videoContainer" style="display: none;">
             <video width="320" height="240" controls>
-                <source src="film.mp4" type="video/mp4"> <!-- Substitua "seu_video.mp4" pelo caminho do seu vídeo -->
+                <source src="video.mp4" type="video/mp4">
                 Seu navegador não suporta o elemento de vídeo.
             </video>
-            <p id="videoText" style="display: none; color: #a609ee; font-style: italic;">
-                esses somos eu e você de um universo paralelo onde somos ramster vendo um filminho e eu tento roubar um mini nuguets de ramster seu
-            </p>
-            <button id="musicButton" onclick="mostrarMusica()">Aqui uma musiquinha q me lembra vc que eu adoro</button> <!-- Botão para mostrar/esconder música -->
         </div>
 
         <div class="audio-container" id="audioContainer">
             <audio controls>
-                <source src="Artic Monkeys - Do I Wanna Know.m4a" type="audio/mpeg"> <!-- Substitua "sua_musica.mp3" pelo caminho da sua música -->
+                <source src="audio.mp3" type="audio/mpeg">
                 Seu navegador não suporta o elemento de áudio.
             </audio>
         </div>
-
-        <button id="finalConsiderationsButton" style="display: none;" onclick="mostrarConsideracoes()">Considerações Finais</button>
     </div>
 
     <script>
         function mostrarMensagem() {
-            var mensagem = document.getElementById("mensagemSecreta");
-            mensagem.style.display = "block";
-            setTimeout(() => { mensagem.style.opacity = "1"; }, 10);
-            document.getElementById("fotinhaButton").style.display = "block"; // Mostra o botão "Fotinha Surpresa"
+            document.getElementById("mensagemSecreta").style.display = "block";
+            document.getElementById("fotinhaButton").style.display = "block"; // Mostra o botão da fotinha
         }
 
         function mostrarImagem() {
-            var imagem = document.getElementById("imagemEscondida");
-            imagem.style.display = "block"; // Exibe a imagem apenas após o botão ser clicado
-            setTimeout(() => { imagem.style.opacity = "1"; }, 10);
-            document.getElementById("startGameButton").style.display = "block"; // Mostra o botão "Começar Jogo"
+            document.getElementById("imagemEscondida").style.display = "block"; // Mostra a imagem escondida
+            document.getElementById("fotinhaButton").style.display = "none"; // Esconde o botão da fotinha
         }
 
-        function mostrarVideo() {
-            var videoContainer = document.getElementById("videoContainer");
-            videoContainer.style.display = "block"; // Exibe a seção de vídeo
-            document.getElementById("videoButton").style.display = "none"; // Esconde o botão "Ver Mini Vídeo" após o clique
-            document.getElementById("videoText").style.display = "block"; // Exibe o texto abaixo do vídeo
-            document.getElementById("finalConsiderationsButton").style.display = "block"; // Mostra o botão "Considerações Finais"
-        }
-
-        // Função para mostrar/ocultar música
-        function mostrarMusica() {
-            var audioContainer = document.getElementById("audioContainer");
-            audioContainer.style.display = audioContainer.style.display === "none" ? "block" : "none"; // Alterna a exibição da seção de áudio
-        }
-
-        // Função para criar corações
-        function criarCoracao() {
-            const coracao = document.createElement('div');
-            coracao.className = 'heart';
-            coracao.innerHTML = '❤️'; // Emoji de coração
-            document.body.appendChild(coracao);
-            
-            // Define a posição inicial do coração
-            coracao.style.left = Math.random() * 200 + 'vw'; // Posição horizontal aleatória
-
-            // Remove o coração após a animação
-            setTimeout(() => {
-                document.body.removeChild(coracao);
-            }, 3500);
-        }
-
-        // Cria corações a cada 800ms
-        setInterval(criarCoracao, 200);
-
-        // Iniciar o jogo
         function startGame() {
-            document.getElementById("gameContainer").style.display = "flex"; // Exibe o contêiner do jogo
-            document.getElementById("gameTitle").style.display = "block"; // Mostra o título do jogo
-            document.getElementById("startGameButton").style.display = "none"; // Esconde o botão "Começar Jogo" após o clique
+            document.getElementById("gameContainer").style.display = "flex"; // Mostra o contêiner do jogo
+            document.getElementById("startGameButton").style.display = "none"; // Esconde o botão de iniciar o jogo
         }
 
         function figureClicked(figure) {
-            const message = document.getElementById("gameMessage");
+            const gameMessage = document.getElementById("gameMessage");
             switch (figure) {
                 case 1:
-                    message.innerText = "Engraçado que ninguém me chamou pra F1 até hoje.";
+                    gameMessage.textContent = "Você encontrou a figura 1!";
                     break;
                 case 2:
-                    message.innerText = "Me leva pra ver você jogar e eu poder xingar o outro time todinho.";
+                    gameMessage.textContent = "Você encontrou a figura 2!";
                     break;
                 case 3:
-                    message.innerText = "E é claro, me chama pra eu mamar seu tete (nosso).";
-                    document.getElementById("videoButton").style.display = "block"; // Mostra o botão "Ver Mini Vídeo" após clicar na imagem 3
+                    gameMessage.textContent = "Você encontrou a figura 3!";
                     break;
                 default:
-                    message.innerText = "";
+                    gameMessage.textContent = "";
             }
-            message.style.display = "block"; // Exibe a mensagem quando uma figura é clicada
+            gameMessage.style.display = "block"; // Mostra a mensagem
         }
 
-        function mostrarConsideracoes() {
-            alert("e isso foi um pouquinho de um tekinho de um tiquinho q consegui fazer pra vc, espero que goste pq foi de coração totosa, to com uma saudade da porra de você e espero te ver logo. (um pedido que faço pra voce é que você esmague meu cranio com essas suas coxa q eu to doido pra deita nelas)");
+        function mostrarVideo() {
+            document.getElementById("videoContainer").style.display = "block"; // Mostra o contêiner de vídeo
+            document.getElementById("audioContainer").style.display = "block"; // Mostra o contêiner de áudio
         }
     </script>
 </body>
