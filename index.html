@@ -23,8 +23,8 @@
             text-align: center;
             background-color: #000000;
             border-radius: 100px;
-            box-shadow: 0 -10px 90px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
+            box-shadow: 0 10px 90px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
             padding: 80px;
             max-height: 80vh; /* Limita a altura do contêiner */
             overflow-y: auto; /* Permite rolagem dentro do contêiner */
@@ -47,7 +47,7 @@
         }
 
         .first-image {
-            width: 300px; /* Largura fixa da primeira imagem */
+            width: 250px; /* Largura fixa da primeira imagem */
         }
 
         .caption {
@@ -112,14 +112,14 @@
         }
 
         .figure {
-            width: 110px; /* Largura da figura */
-            height: 110px; /* Altura da figura */
+            width: 100px; /* Largura da figura */
+            height: 80px; /* Altura da figura */
             cursor: pointer;
             margin: 5px; /* Margem entre as figuras */
         }
 
         .hidden-image img {
-            width: 60%; /* Ajuste para 60% da largura do contêiner */
+            width: 50%; /* Ajuste para 60% da largura do contêiner */
             height: auto; /* Mantém a proporção da imagem */
             margin-top: 10px;
             border-radius: 5px;
@@ -145,14 +145,14 @@
         <p class="caption">Essa é você</p>
 
         <p>
-            Eu gosto muito, muito, muito de você. Talvez você tenha medo de ser machucada no amor novamente. Porém, quero te dizer que jamais penso em ser alguém ruim para você. Sei que você já passou por tantas coisas que machucaram seu coraçãozinho, sei que você já chorou sentindo culpa por coisas que não fez, e não consigo nem imaginar o quanto isso foi difícil para você. Então, eu não serei mais uma pessoa da qual você se arrependerá de ter conhecido. E está tudo bem se você não acreditar nisso agora, mas espero que enxergue meu coração.
+            Eu gosto muito, muito, muito de você. Talvez você tenha medo de ser machucada no amor novamente, Porém, quero te dizer que jamais penso em ser alguém ruim para você. Sei que você já passou por tantas coisas que machucaram seu coraçãozinho, sei que você já chorou sentindo culpa por coisas que não fez, e não consigo nem imaginar o quanto isso foi difícil para você. Então, eu não serei mais uma pessoa da qual você se arrependerá de ter conhecido. E está tudo bem se você não acreditar nisso agora, mas espero que enxergue meu coração.
 
-            Aos meus olhos, você é a garota mais linda, gostosa, divertida, fofa, engraçadinha e perfeita do universo. Não adianta falar que não é, porque você é sim, e ponto final. Sei que eu não sou perfeito, mas pode ter certeza de que meu coração só tem coisas boas para compartilhar com você, totosa.
+            Aos meus olhos, você é a garota mais linda, gostosa, divertida, fofa, engraçadinha e perfeita do universo. Não adianta falar que não é, porque você é sim, e ponto final. Sei que eu não sou perfeito e meio estranho mas pode ter certeza de que meu coração só tem coisas boas para compartilhar com você totosa.
         </p>
 
         <button onclick="mostrarMensagem()">Se apertar aqui nao tem mais volta</button>
         
-        <p class="secret-message" id="mensagemSecreta" style="display: none;">entao voce apertou o botao né, AGORA VC É MINHA MOMORADA, nao tem mais volta, Sempre que tô com saudade de você vejo essa foto e lembro de nozes na hihappy !</p>
+        <p class="secret-message" id="mensagemSecreta" style="display: none;">entao voce apertou o botao né, AGORA VC É MINHA MOMORADA, nao tem mais volta kkkekrkekrke,sei q nao ta num momento de me querer por perto e entendo isso tudo no seu temmpo, mas se tem uma cois q nao vou é sumir nem deixar vc só mesmo q so por mensagem, Sempre que tô com saudade de você vejo essa foto e lembro de nozes na hihappy !</p>
         
         <button id="fotinhaButton" style="display: none;" onclick="mostrarImagem()">Eu e vc, Vc e eu</button> <!-- Escondido inicialmente -->
 
@@ -170,8 +170,8 @@
             <p id="gameMessage" style="display: none; color: #ca10c1;"></p>
         </div>
 
-        <button id="startGameButton" style="display: none;" onclick="startGame()">veja uma por uma</button> <!-- Escondido inicialmente -->
-        <button id="videoButton" style="display: none;" onclick="mostrarVideo()">Eu e vc ramsters</button> <!-- Escondido inicialmente -->
+        <button id="startGameButton" style="display: none;" onclick="startGame()">veja uma por uma, cada foto tem um significado embaixo </button> <!-- Escondido inicialmente -->
+        <button id="videoButton" style="display: none;" onclick="mostrarVideo()">Logo logo esses serao eu e vc </button> <!-- Escondido inicialmente -->
 
         <div class="video-container" id="videoContainer" style="display: none;">
             <video width="320" height="240" controls>
@@ -259,7 +259,7 @@
                     message.innerText = "Me leva pra ver você jogar e eu poder xingar o outro time todinho.";
                     break;
                 case 3:
-                    message.innerText = "E é claro, me chama pra eu mamar seu tete (nosso).";
+                    message.innerText = "E é claro, me chama pra me dar tete (que é nosso).";
                     document.getElementById("videoButton").style.display = "block"; // Mostra o botão "Ver Mini Vídeo" após clicar na imagem 3
                     break;
                 default:
@@ -269,7 +269,7 @@
         }
 
         function mostrarConsideracoes() {
-            alert("e isso foi um pouquinho de um tekinho de um tiquinho q consegui fazer pra vc, espero que goste pq foi de coração totosa, to com uma saudade da porra de você e espero te ver logo. (um pedido que faço pra voce é que você esmague meu cranio com essas suas coxa q eu to doido pra deita nelas)");
+            alert("e isso foi um pouquinho de um tekinho de um tiquinho q consegui fazer pra vc, espero que goste pq foi de coração totosa, to com uma saudade da porra de você e espero te ver logo. (esses dia um sonho que eu tive foi voce me esmagando minha cabeça com essas suas coxa que o senhor deuzo realize logo esse sonho)");
         }
     </script>
 </body>
